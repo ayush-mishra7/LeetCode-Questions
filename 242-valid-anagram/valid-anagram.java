@@ -1,24 +1,25 @@
-import java.util.Arrays;
 class Solution {
     public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false; 
+        }
 
-        // n log n
-        // char[] a = s.toCharArray();
-        // char[] b = t.toCharArray();
+        int[] charCounts = new int[26]; 
 
-        // Arrays.sort(a);
-        // Arrays.sort(b);
-        
-        // return Arrays.equals(a, b);
-        
-        // O(n)
-        int[] freq = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            charCounts[s.charAt(i) - 'a']++;
+        }
 
-        for(char c:s.toCharArray()) freq[c-'a']++;
-        for(char c:t.toCharArray()) freq[c-'a']--;
-        for(int x:freq){
-            if(x != 0) return false;
-        } 
-        return true;
+        for (int i = 0; i < t.length(); i++) {
+            charCounts[t.charAt(i) - 'a']--;
+        }
+
+        for (int count : charCounts) {
+            if (count != 0) {
+                return false; 
+            }
+        }
+
+        return true; 
     }
 }
