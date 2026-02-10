@@ -10,10 +10,12 @@ class Solution {
             Set<Integer> oddSet = new HashSet<>();
 
             for (int j = i; j < n; j++) {
-                if (nums[j] % 2 == 0) {
-                    evenSet.add(nums[j]);
+                int x = nums[j];
+
+                if (x % 2 == 0) {
+                    evenSet.add(x);
                 } else {
-                    oddSet.add(nums[j]);
+                    oddSet.add(x);
                 }
 
                 if (evenSet.size() == oddSet.size()) {
