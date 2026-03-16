@@ -1,21 +1,14 @@
+import java.util.*;
 class Solution {
     public String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0) return "";
-        
-        String pref = strs[0];
-        int prefLen = pref.length();
-
-        for (int i = 1; i < strs.length; i++) {
-            String s = strs[i];
-            while (prefLen > s.length() || !pref.equals(s.substring(0, prefLen))) {
-                prefLen--;
-                if (prefLen == 0) {
-                    return "";
-                }
-                pref = pref.substring(0, prefLen);
-            }
+        StringBuilder res=new StringBuilder();
+        Arrays.sort(strs);
+        char[] first=strs[0].toCharArray();
+        char[] last=strs[strs.length-1].toCharArray();
+        for(int i=0;i<first.length && i<last.length;i++){
+            if(first[i] != last[i]) break;
+            res.append(first[i]);
         }
-
-        return pref;        
+        return res.toString();
     }
 }
