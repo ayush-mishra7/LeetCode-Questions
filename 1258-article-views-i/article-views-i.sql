@@ -1,5 +1,1 @@
--- ayush
-SELECT DISTINCT author_id AS id
-FROM Views
-WHERE author_id = viewer_id
-ORDER BY id;
+select distinct(author_id) as id from Views where viewer_id=author_id order by id asc;
